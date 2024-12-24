@@ -79,14 +79,42 @@ Pour utiliser un composant se trouvant dans un autre module :
    Vous pouvez maintenant utiliser le composant dans un fichier HTML :
    ```html
    <app-nom-du-composant></app-nom-du-composant>
-   ```
+   
+---
+## **Configuration du Routage dans Angular**
+
+Dans Angular, le routage permet de naviguer entre différentes vues ou pages de votre application. Pour cela, vous devez configurer les routes dans un module dédié.
+
+Dans le fichier `app-routing.module.ts`, vous allez :
+
+- Importer les composants associés aux routes.
+- Configurer les routes en utilisant un tableau `Routes` qui mappe les chemins aux composants correspondants.
+
+Exemple :
+
+```typescript
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },  // Route par défaut
+  { path: 'about', component: AboutComponent }  // Route vers la page "About"
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],  // Enregistrement des routes
+  exports: [RouterModule]  // Exportation pour pouvoir les utiliser ailleurs
+})
+export class AppRoutingModule { }
+```
 
 ---
-
 ## **Collaborer avec GitHub**
 Pour que tout le monde puisse synchroniser et partager son travail, suivez ces étapes :
 
-### **1. Initialiser et configurer GitHub (si ce n'est pas fait)**
+### **1. Initialiser et configurer GitHub (si ce nest pas fait)**
 Assurez-vous d'avoir configuré votre projet local avec le dépôt GitHub :
 ```bash
 git init
