@@ -7,11 +7,11 @@ Bienvenue dans le projet **SENEVENT** ! Ce projet a été généré à l'aide de
 ## **Modules du projet**
 Le projet est organisé en plusieurs modules situés dans le répertoire `src/app/` :
 
-1. **acceuil-events** : Responsable : *Soukeyna* (inclut la page des événements).
+1. **homepage & events** : Responsable : *Soukeyna* (inclut la page des événements).
 2. **authentification** : Responsable : *Abdoulaye Sow*.
-3. **autre-composants** : Responsable : *Fa Syaka Diouf*.
+3. **create-event** : Responsable : *Fa Syaka Diouf*.
 4. **page-evenement** : Responsable : *Fa Syaka Diouf*.
-5. **pages-profil** : Responsable : *Nazar*.
+5. **profile-page** : Responsable : *Nazar*.
 
 Chaque module est indépendant, mais vous pouvez utiliser les composants des autres modules en suivant les étapes décrites ci-dessous.
 
