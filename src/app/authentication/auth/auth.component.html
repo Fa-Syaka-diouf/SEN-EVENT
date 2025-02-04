@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row auth-container">
+    <!-- Section gauche -->
+    <div class="col-md-6 auth-left text-center">
+      <img
+        src="logo.png"
+        alt="Sen Event"
+        class="mb-4"
+        style="max-width: 150px"
+      />
+      <h1>Rejoignez SEN-EVENT</h1>
+      <p>et ne manquez plus aucun événement qui compte pour vous</p>
+    </div>
+    <!-- Section droite -->
+    <div class="col-md-6 auth-right">
+      <!-- Onglets pour basculer entre "Créer un compte" et "Se connecter" -->
+      <ul class="nav nav-tabs mb-3">
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="./create-account"
+            >Créer un compte</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="./login"
+            >Se connecter</a
+          >
+        </li>
+      </ul>
+      <!-- Contenu des formulaires -->
+      <div class="tab-content mt-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
