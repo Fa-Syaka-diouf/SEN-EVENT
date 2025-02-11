@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  .step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .step-indicator div {
+    text-align: center;
+    flex: 1;
+  }

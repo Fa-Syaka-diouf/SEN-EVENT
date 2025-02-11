@@ -10,6 +10,7 @@ import { ReviserComponent } from './reviser/reviser.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { share } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,11 @@ import { SharedModule } from '../shared/shared.module';
     ReviserComponent,
     CreateEventComponent,
   ],
-  imports: [CommonModule, CreateEventRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    CreateEventRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class CreateEventModule {}
