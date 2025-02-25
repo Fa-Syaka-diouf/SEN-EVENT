@@ -5,15 +5,21 @@ import { ProfilePageRoutingModule } from './profile-page-routing.module';
 import { VisitorProfileComponent } from './visitor-profile/visitor-profile.component';
 import { CreatorProfileComponent } from './creator-profile/creator-profile.component';
 
+import { ProfilesPageComponent } from './profile-pages/profile-page.component';
+import { Profil2Component } from './profil2/profil2.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
-  declarations: [
-    VisitorProfileComponent,
+  declarations: [ProfilesPageComponent,
     CreatorProfileComponent,
+    VisitorProfileComponent,
   ],
   imports: [
     CommonModule,
-    ProfilePageRoutingModule
-  ]
+    ProfilePageRoutingModule,
+    Profil2Component,
+    SharedModule,
+  ],
 })
-export class ProfilePageModule { }
+export class ProfilePageModule {}

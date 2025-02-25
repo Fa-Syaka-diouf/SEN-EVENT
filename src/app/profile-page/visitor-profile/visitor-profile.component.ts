@@ -7,13 +7,18 @@ import { environment } from '../../../environments';
   templateUrl: './visitor-profile.component.html',
   styleUrl: './visitor-profile.component.css'
 })
+ 
+
 export class VisitorProfileComponent implements OnInit {
+  currentSlide = 0;
   user: any;
   djangoServer = 'http://localhost:8000'; // URL de votre serveur Django
   
   constructor(private authService: AuthService) {}
   
   ngOnInit(): void {
+    // Le code s'exécutera après le chargement du composant
+    this.showSlide(this.currentSlide);
     this.authService.user$.subscribe(data => {
       if (data) {
         // Créer une copie pour ne pas modifier l'original
@@ -43,5 +48,35 @@ export class VisitorProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  // Méthode pour afficher un slide spécifique
+  showSlide(n: number) {
+    const slides = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.dot');
+
+    // Masquer tous les slides
+    slides.forEach((slide) =>
+      (slide as HTMLElement).classList.remove('active')
+    );
+    // Désactiver tous les points
+    dots.forEach((dot) => (dot as HTMLElement).classList.remove('active'));
+
+    // Gérer la boucle du carousel
+    this.currentSlide = (n + slides.length) % slides.length;
+
+    // Afficher le slide actif
+    (slides[this.currentSlide] as HTMLElement).classList.add('active');
+    // Activer le point correspondant
+    (dots[this.currentSlide] as HTMLElement).classList.add('active');
+  }
+
+  // Méthodes pour les boutons précédent/suivant
+  prevSlide() {
+    this.showSlide(this.currentSlide - 1);
+  }
+
+  nextSlide() {
+    this.showSlide(this.currentSlide + 1);
   }
 }
