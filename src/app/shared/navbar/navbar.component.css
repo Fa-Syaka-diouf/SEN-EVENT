@@ -4,26 +4,60 @@
 }
 .createCount{
     background-color: #FF6500;
+    color: #1E3E62;
+    text-align: center;
 }
+nav{
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-bottom: none;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.6);
+  }
+  /* Navbar styles */
+  .nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: color 0.3s ease;
+  }
+  
+  
+  .nav-link:hover {
+    color: #FF6500 !important;
+    cursor: pointer !important;
+  }
+  #navbarNav{
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
 .createCount:hover{
     background-color: #1E3E62;
+    color: #FF6500;
 }
+.navbar-brand img {
+    height: 100px;
+}
+
+
 .navbar-brand > span{
     font-size: xx-large;
     color: #FF6500;
 }
-form > input{
+.searchbar{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border: none;
     color: white;
-    background-color: #1E3E62;
+    background-color: #FF6500;
 }
-form > input::placeholder{
-    color: white;
+.searchbar::placeholder{
+    color: #1E3E62;
 }
-form > button{
+.searchbtn{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     background-color: #1E3E62;
 }
+.navbar.scrolled {
+    background-color: #1E3E62 !important; /* Changement de couleur après 120vh */
+  }

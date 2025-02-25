@@ -1,12 +1,33 @@
 <app-navbar></app-navbar>
-<h2 class="text-center my-4">Créer un nouveau événement</h2>
+<div class="" id="create-event-container">
+  <div class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+  </div>
 
-<!-- Step Indicator -->
-<div class="my-5 step-indicator">
-  <div>Éditer</div>
-  <div>Bannière</div>
+  <div class="title">Créer un nouveau évènement</div>
 
-  <div>Entrée-tickets</div>
-  <div>Réviser</div>
+  <div class="progress-container">
+    <div class="progress-bar-custom"></div>
+    <div
+      class="progress-bar-fill"
+      [style.width.%]="((currentStepIndex + 1) / steps.length) * 100"
+    ></div>
+
+    <div
+      *ngFor="let step of steps; let i = index"
+      class="step-container"
+      [class.active]="i <= currentStepIndex"
+    >
+      <div class="step" [class.active]="i <= currentStepIndex">
+        <i *ngIf="step === 'editer'" class="fas fa-edit"></i>
+        <i *ngIf="step === 'banner'" class="fas fa-image"></i>
+        <i *ngIf="step === 'ticket'" class="fas fa-ticket-alt"></i>
+        <i *ngIf="step === 'reviser'" class="fas fa-check"></i>
+      </div>
+      <div class="step-text">{{ step | titlecase }}</div>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
+<app-contact></app-contact>
+<app-footer></app-footer>
