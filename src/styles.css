@@ -43,7 +43,9 @@ body {
   .carousel-indicators button {
     background-color: #ff8000;
   }
-  
+a {
+  text-decoration: none;
+}
   /* Fixe la légende */
 .fixed-caption {
     position: absolute;

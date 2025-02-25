@@ -1,24 +1,63 @@
-.btn-custom {
-    background-color: #0d2b56;
-    color: white;
-    border: none;
-  }
-  .btn-custom:hover {
-    background-color: #FF6500;
-  }
-  .social-btn {
-    border: 1px solid #ddd;
-  }
-  .social-btn:hover {
-    border: 1px solid #FF6500;
-    background-color: white;
-  }
-.password{
-    color: #FF6500;
+:root {
+  --mobile-breakpoint: 388px;
 }
-.form-control{
-    border: 1px solid rgba(13, 43, 86, 0.4);
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
 }
-img{
-    width: 15px;
-  }
+.color-fav {
+  color: #FF6500;
+}
+
+
+.form-container {
+  width: 100%; 
+  max-width: 500px; 
+}
+.btn-outline-secondary {
+  border-color: rgba(13, 43, 86, 0.4);
+  background-color: #1E3E62;
+  color: white;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #e6620bdd;
+  color: white;
+}
+
+.separator {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.separator span {
+  background-color: #f8f9fa;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #dee2e6;
+  z-index: 0;
+}
+.social-login .btn {
+  height: 45px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
