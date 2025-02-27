@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
-  styleUrls: ['./create-account.component.css'] 
+  styleUrls: ['./create-account.component.css'],
 })
 export class CreateAccountComponent {
   prenom: string = '';
@@ -15,7 +15,7 @@ export class CreateAccountComponent {
   password1: string = '';
   password2: string = '';
   errorMessage: string = '';
-  
+
   profilePhoto: File | null = null;
   coverPhoto: File | null = null;
   profilePhotoUrl: string | null = null;
@@ -25,7 +25,7 @@ export class CreateAccountComponent {
 
   register() {
     if (this.password1 !== this.password2) {
-      this.errorMessage = "Les mots de passe ne correspondent pas.";
+      this.errorMessage = 'Les mots de passe ne correspondent pas.';
       return;
     }
 
@@ -37,18 +37,22 @@ export class CreateAccountComponent {
       email: this.email,
       username: this.username,
       password: this.password1,
-      userType: 'visitor'
+      userType: 'visitor',
     };
 
     const formData = new FormData();
     // Ajout des propriétés textuelles de userData
     for (const [key, value] of Object.entries(userData)) {
       formData.append(key, value);
-    }    
-    
+    }
+
     // Ajout des fichiers si disponibles
     if (this.profilePhoto) {
-      formData.append('profile_photo', this.profilePhoto, this.profilePhoto.name);
+      formData.append(
+        'profile_photo',
+        this.profilePhoto,
+        this.profilePhoto.name
+      );
     }
     if (this.coverPhoto) {
       formData.append('cover_photo', this.coverPhoto, this.coverPhoto.name);
@@ -63,8 +67,8 @@ export class CreateAccountComponent {
         // En cas d'erreur, afficher un message
         this.errorMessage = "Erreur lors de l'inscription. Veuillez réessayer.";
         console.error("Erreur lors de l'inscription :", error);
-        console.log("Donnees envoyees : ", formData); // To delete
-      }
+        console.log('Donnees envoyees : ', formData); // To delete
+      },
     });
   }
 
@@ -85,5 +89,3 @@ export class CreateAccountComponent {
     }
   }
 }
-
-

@@ -6,13 +6,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/apiUsers';
   private tokenKey = 'jwt';
   private authStatus = new BehaviorSubject<boolean>(this.hasToken());
-  
+
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
 
@@ -29,29 +29,31 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login/`, { email, password }).pipe(
-      tap(response => {
-        console.log('Réponse login:', response); // Pour voir la réponse complète
-        localStorage.setItem(this.tokenKey, response.jwt);
-        this.authStatus.next(true);
-      }),
-      switchMap(() => this.getUserData()),
-      tap(userData => {
-        console.log('Données utilisateur:', userData); // Pour voir les données utilisateur
-        this.userSubject.next(userData);
-        if (userData && userData.userType) {
-          this.userType = userData.userType;
-        } else {
-          this.userType = 'visitor';
-        }
-      })
-    );
+    return this.http
+      .post<any>(`${this.apiUrl}/login/`, { email, password })
+      .pipe(
+        tap((response) => {
+          console.log('Réponse login:', response); // Pour voir la réponse complète
+          localStorage.setItem(this.tokenKey, response.jwt);
+          this.authStatus.next(true);
+        }),
+        switchMap(() => this.getUserData()),
+        tap((userData) => {
+          console.log('Données utilisateur:', userData); // Pour voir les données utilisateur
+          this.userSubject.next(userData);
+          if (userData && userData.userType) {
+            this.userType = userData.userType;
+          } else {
+            this.userType = 'visitor';
+          }
+        })
+      );
   }
 
   register(userData: any): Observable<any> {
     userData.userType = this.userType;
     return this.http.post(`${this.apiUrl}/register/`, userData).pipe(
-      tap(response => {
+      tap((response) => {
         this.userSubject.next(response);
       })
     );
@@ -71,8 +73,8 @@ export class AuthService {
     const token = this.getToken();
     return this.http.get(`${this.apiUrl}/user/`, {
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
   }
 
@@ -88,17 +90,22 @@ export class AuthService {
   getUserType(): string | null {
     return this.userType;
   }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(this.tokenKey);
+  }
 
   // méthode pour mettre à jour le userType
   updateUserType(userId: number, userType: string): Observable<any> {
-    return this.http.patch(`${this.apiUrl}/update-user-type/`, {
-      userId,
-      userType
-    }).pipe(
-      tap(response => {
-        this.userType = userType;
-        this.userSubject.next(response);
+    return this.http
+      .patch(`${this.apiUrl}/update-user-type/`, {
+        userId,
+        userType,
       })
-    );
+      .pipe(
+        tap((response) => {
+          this.userType = userType;
+          this.userSubject.next(response);
+        })
+      );
   }
 }

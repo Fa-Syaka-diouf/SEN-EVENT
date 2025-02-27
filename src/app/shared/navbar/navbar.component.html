@@ -49,11 +49,23 @@
         <button class="btn" style="background-color: inherit; color: #ff6500">
           <i class="bi bi-bell"></i>
         </button>
-        <a
-          routerLink="/auth/create-account"
-          class="btn createCount"
-          >Créer un compte</a
-        >
+
+        <!-- Si l'utilisateur est connecté -->
+        <ng-container *ngIf="isAuthenticated; else guestLinks">
+          <button class="btn btn-danger" (click)="logout()">
+            Se déconnecter
+          </button>
+          <a routerLink="/profile" class="btn btn-outline-primary">
+            <i class="bi bi-person-circle"></i>
+          </a>
+        </ng-container>
+
+        <!-- Si l'utilisateur n'est PAS connecté -->
+        <ng-template #guestLinks>
+          <a routerLink="/auth/create-account" class="btn createCount">
+            Créer un compte
+          </a>
+        </ng-template>
       </div>
     </div>
   </div>
